@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<meta name="viewport" id="viewport_device" content="width=device-width, initial-scale=1">
 <title>Lost Cities scorekeeper</title>
 <script type='text/javascript' src='https://code.jquery.com/jquery-2.1.3.js'></script>
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -168,6 +169,12 @@ var clearSuits = function() {
 $('#reverse-link').click(reverseSuits);
 $('#clear-link').click(clearSuits);
 
+if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/IEMobile/i)) {
+    $("#viewport_device").attr("content", "width=700");
+} else if(navigator.userAgent.match(/iPad/i)) {
+    // $("#viewport_device").attr("content", "initial-scale = 1.00");
+}
+
 });//]]>  
 
 </script>
@@ -182,8 +189,8 @@ $('#clear-link').click(clearSuits);
         <div id="suit-green-container" class="col-xs-2 col-md-2 suit-container"></div>
         <div id="suit-red-container" class="col-xs-2 col-md-2 suit-container"></div>
         <div class="col-xs-1 col-md-1 right-spacer">
-            <p><a href="#" id="reverse-link" role="button"><span class="glyphicon glyphicon-refresh"></span></a></p>
-            <p><a href="#" id="clear-link" role="button"><span class="glyphicon glyphicon-trash"></span></a></p>
+            <h2><a href="#" id="reverse-link" role="button"><span class="glyphicon glyphicon-refresh"></span></a></p>
+            <h2><a href="#" id="clear-link" role="button"><span class="glyphicon glyphicon-trash"></span></a></p>
         </div>
     </div>
     <div class="row">
