@@ -170,7 +170,7 @@ $('#reverse-link').click(reverseSuits);
 $('#clear-link').click(clearSuits);
 
 if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/IEMobile/i)) {
-    $("#viewport_device").attr("content", "width=700");
+    $("#viewport_device").attr("content", "width=550, initial-scale=1.0");
 } else if(navigator.userAgent.match(/iPad/i)) {
     // $("#viewport_device").attr("content", "initial-scale = 1.00");
 }
@@ -189,8 +189,8 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
         <div id="suit-green-container" class="col-xs-2 col-md-2 suit-container"></div>
         <div id="suit-red-container" class="col-xs-2 col-md-2 suit-container"></div>
         <div class="col-xs-1 col-md-1 right-spacer">
-            <h2><a href="#" id="reverse-link" role="button"><span class="glyphicon glyphicon-refresh"></span></a></p>
-            <h2><a href="#" id="clear-link" role="button"><span class="glyphicon glyphicon-trash"></span></a></p>
+            <h3><a href="#" id="reverse-link" role="button"><span class="glyphicon glyphicon-refresh"></span></a></h3>
+            <h3><a href="#" id="clear-link" role="button"><span class="glyphicon glyphicon-trash"></span></a></h3>
         </div>
     </div>
     <div class="row">
