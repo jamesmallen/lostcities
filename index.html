@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title> - jsFiddle demo</title>
+  
+  <script type='text/javascript' src='https://code.jquery.com/jquery-2.1.3.js'></script>
+  
+  
+  
+  
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    
+  
+    
+      <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    
+   <style type='text/css'>
+    .left-spacer, .right-spacer {
+    background-color: #FFF;
+}
+#suit_yellow_container {
+    background-color: #FFEB99;
+}
+#suit_blue_container {
+    background-color: #E8FFFF;
+}
+#suit_white_container {
+    background-color: #FEFEFE;
+}
+#suit_green_container {
+    background-color: #D4F7E5;
+}
+#suit_red_container {
+    background-color: #FFD6CC;
+}
+.total {
+    text-align: center;
+    margin: 1em;
+}
+.total .badge {
+    padding: .3em 1.5em;
+}
+#overall_total {
+    text-align: center;
+}
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+
+if (!String.prototype.startsWith) {
+  String.prototype.startsWith = function(searchString, position) {
+    position = position || 0;
+    return this.indexOf(searchString, position) === position;
+  };
+}
+
+suits = ['yellow', 'blue', 'white', 'green', 'red'];
+cards = ['invest1', 'invest2', 'invest3', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+
+function calculateScore() {
+    console.log('calculating');
+    var overallTotal = 0;
+    
+    for (var i = 0; i < suits.length; i++) {
+        var suit = suits[i];
+        console.log(suit);
+
+        var suitTotal = 0;
+        var numCards = 0;
+        var multiplier = 1;
+
+        for (var j = 0; j < cards.length; j++) {
+            var card = cards[j];
+
+            var id = suit + '_' + card;
+
+            var checkbox = $('#' + id);
+
+            // console.log(checkbox);
+
+            if (checkbox.prop('checked')) {
+                numCards++;
+                if (card.startsWith('invest')) {
+                    multiplier++;
+                } else {
+                    suitTotal += parseInt(card);
+                }
+            }
+        }
+
+        console.log(suitTotal);
+
+        if (numCards > 0) {
+            suitTotal -= 20;
+        }
+
+        suitTotal *= multiplier;
+
+        if (numCards >= 8) {
+            suitTotal += 20;
+        }
+
+        $('#' + suit + '_total .badge').html(suitTotal);
+        
+        overallTotal += suitTotal;
+
+    }
+    
+    $('#overall_total span').html(overallTotal);
+}
+
+
+for (var i = 0; i < suits.length; i++) {
+    var suit = suits[i];
+
+    var container_id = 'suit_' + suit + '_container';
+
+    $('#suits_container').append('<div id="' + container_id + '" class="col-xs-2"></div>');
+
+
+    for (var j = 0; j < cards.length; j++) {
+        var card = cards[j];
+
+        var id = suit + '_' + card;
+
+        if (card.startsWith('invest')) {
+            var cardText = '<span class="glyphicon glyphicon-hand-right"></span>';
+        } else {
+            var cardText = card;
+        }
+
+        $('#' + container_id).append('<div class="checkbox suit-' + suit + ' card-' + card + '"><label><input type="checkbox" id="' + id + '">' + cardText + '</label></div>');
+    }
+
+    $('#' + container_id).append('<p class="total" + id="' + suit + '_total"><span class="badge">0</span></div>');
+}
+
+$('input').click(calculateScore);
+
+$('#reverse-link').click(function() {
+    var container = $('#suits_container');
+    var subitems = container.children();
+    container.append(subitems.get().reverse());
+});
+});//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <div class="container">
+    <div class="row" id="suits_container">
+        <div class="col-xs-1 left-spacer">&nbsp;</div>
+        <div id="suit_yellow_container" class="col-xs-2">
+        </div>
+        <div id="suit_blue_container" class="col-xs-2">
+        </div>
+        <div id="suit_white_container" class="col-xs-2">
+        </div>
+        <div id="suit_green_container" class="col-xs-2">
+        </div>
+        <div id="suit_red_container" class="col-xs-2">
+        </div>
+        <div class="col-xs-1 right-spacer"><a href="#" id="reverse-link"><span class="glyphicon glyphicon-refresh"></span></a></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 left-spacer"></div>
+        <div class="col-xs-10">
+             <h1 id="overall_total"><span class="label label-default">0</span></h1>
+
+        </div>
+        <div class="col-xs-1 right-spacer"></div>
+    </div>
+</div>
+  
+</body>
+
+
+</html>
+
