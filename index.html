@@ -14,6 +14,47 @@
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <style type='text/css'>
+@font-face { font-family: 'Lithos Pro Black'; src: url('fonts/lithos_pro_black.woff') format('woff'), url('fonts/lithos_pro_black.ttf') format('truetype'); font-weight: black; font-style: normal;}
+
+body {
+    font-family: "Lithos Pro Black";
+    font-weight: black;
+}
+.col-xs-5ths,
+.col-sm-5ths,
+.col-md-5ths,
+.col-lg-5ths {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.col-xs-5ths {
+    width: 20%;
+    float: left;
+}
+
+@media (min-width: 768px) {
+    .col-sm-5ths {
+        width: 20%;
+        float: left;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-md-5ths {
+        width: 20%;
+        float: left;
+    }
+}
+
+@media (min-width: 1200px) {
+    .col-lg-5ths {
+        width: 20%;
+        float: left;
+    }
+}
 .left-spacer, .right-spacer {
     background-color: #FFFFFF;
 }
@@ -25,18 +66,29 @@
 }
 #suit-yellow-container {
     background-color: #FFEB99;
+    background-image: url('images/yellow-bg.jpg');
+    background-size: 482px 750px;
 }
 #suit-blue-container {
     background-color: #E8FFFF;
+    background-image: url('images/blue-bg.jpg');
+    background-size: 500px 750px;
 }
 #suit-white-container {
-    background-color: #FEFEFE;
+    /*background-color: #FEFEFE;*/
+    background-color: #bda28b;
+    background-image: url('images/white-bg.jpg');
+    background-size: 497px 750px;
 }
 #suit-green-container {
     background-color: #C2F0C2;
+    background-image: url('images/green-bg.jpg');
+    background-size: 493px 750px;
 }
 #suit-red-container {
     background-color: #FFD6CC;
+    background-image: url('images/red-bg.jpg');
+    background-size: 485px 750px;
 }
 .total {
     text-align: center;
@@ -49,11 +101,25 @@
     text-align: center;
 }
 #suits-container .btn-default {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px 0 6px;
 }
 #suits-container .btn-default:active, #suits-container .btn-default.active {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.6);
     color: #fff;
+}
+.label {
+    padding: .35em .6em .2em;
+}
+.label-default {
+    background-color: rgba(0,0,0,0.4);
+    border: .1em solid rgba(0,0,0,0.3);
+}
+.suit-container h3 {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.suit-container h3 span {
 }
 </style>
 
@@ -117,7 +183,6 @@ function calculateScore() {
         $('#' + suit + '-total span').html(suitTotal);
         
         overallTotal += suitTotal;
-
     }
     
     $('#overall-total span').html(overallTotal);
@@ -186,23 +251,23 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
 <body>
 <div class="container-fluid">
     <div class="row" id="suits-container">
-        <div class="col-xs-1" class="left-spacer"></div>
-        <div id="suit-yellow-container" class="col-xs-2 col-md-2 suit-container"></div>
-        <div id="suit-blue-container" class="col-xs-2 col-md-2 suit-container"></div>
-        <div id="suit-white-container" class="col-xs-2 col-md-2 suit-container"></div>
-        <div id="suit-green-container" class="col-xs-2 col-md-2 suit-container"></div>
-        <div id="suit-red-container" class="col-xs-2 col-md-2 suit-container"></div>
-        <div class="col-xs-1 col-md-1 right-spacer">
+        <!-- <div class="col-md-1 xs-hidden" class="left-spacer"></div> -->
+        <div id="suit-yellow-container" class="col-xs-5ths suit-container"></div>
+        <div id="suit-blue-container" class="col-xs-5ths suit-container"></div>
+        <div id="suit-white-container" class="col-xs-5ths suit-container"></div>
+        <div id="suit-green-container" class="col-xs-5ths suit-container"></div>
+        <div id="suit-red-container" class="col-xs-5ths suit-container"></div>
+        <!-- <div class="col-md-1 xs-hidden right-spacer">
             <h4><a href="#" id="reverse-link" role="button"><span class="glyphicon glyphicon-refresh"></span></a></h4>
             <h4><a href="#" id="clear-link" role="button"><span class="glyphicon glyphicon-trash"></span></a></h4>
-        </div>
+        </div> -->
     </div>
     <div class="row">
-        <div class="col-xs-1 left-spacer"></div>
-        <div class="col-xs-10">
+        <!-- <div class="col-xs-1 left-spacer"></div> -->
+        <div class="col-xs-12">
              <h1 id="overall-total"><span class="label label-default">0</span></h1>
         </div>
-        <div class="col-xs-1 right-spacer"></div>
+        <!-- <div class="col-xs-1 right-spacer"></div> -->
     </div>
 </div>
 </body>
