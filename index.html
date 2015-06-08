@@ -8,7 +8,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Lost Cities scorekeeper</title>
 <!--<script type='text/javascript' src='https://code.jquery.com/jquery-2.1.3.js'></script>-->
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> -->
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -19,6 +20,10 @@
 body {
     font-family: "Lithos Pro Black";
     font-weight: black;
+    background-color: #000;
+}
+a, a:hover {
+    color: #fff;
 }
 .col-xs-5ths,
 .col-sm-5ths,
@@ -55,40 +60,49 @@ body {
         float: left;
     }
 }
+
+.container-fluid {
+    margin: 0px 15px;
+}
 .left-spacer, .right-spacer {
-    background-color: #FFFFFF;
 }
 .left-spacer {
-    text-align: right;
+    text-align: left;
 }
 .right-spacer {
-    text-align: left;
+    text-align: right;
 }
 #suit-yellow-container {
     background-color: #FFEB99;
     background-image: url('images/yellow-bg.jpg');
     background-size: 482px 750px;
+    color: #f5d70b;
 }
 #suit-blue-container {
     background-color: #E8FFFF;
     background-image: url('images/blue-bg.jpg');
     background-size: 500px 750px;
+    color: #6585c4;
 }
 #suit-white-container {
     /*background-color: #FEFEFE;*/
     background-color: #bda28b;
     background-image: url('images/white-bg.jpg');
     background-size: 497px 750px;
+    color: #f6ede6;
 }
 #suit-green-container {
     background-color: #C2F0C2;
     background-image: url('images/green-bg.jpg');
     background-size: 493px 750px;
+    background-position: center top;
+    color: #9eb22b;
 }
 #suit-red-container {
     background-color: #FFD6CC;
     background-image: url('images/red-bg.jpg');
     background-size: 485px 750px;
+    color: #f33137;
 }
 .total {
     text-align: center;
@@ -102,24 +116,36 @@ body {
 }
 #suits-container .btn-default {
     background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px 0 6px;
+    padding: 12px 0 6px;
 }
 #suits-container .btn-default:active, #suits-container .btn-default.active {
     background-color: rgba(0, 0, 0, 0.6);
     color: #fff;
 }
 .label {
-    padding: .35em .6em .2em;
+    padding: .4em .6em .2em;
+}
+.suit-container .label {
+    color: inherit;
+    border: none;
 }
 .label-default {
     background-color: rgba(0,0,0,0.4);
     border: .1em solid rgba(0,0,0,0.3);
 }
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+    text-shadow: 0 1px 0 #000;    
+}
 .suit-container h3 {
-    margin-left: -15px;
-    margin-right: -15px;
+    margin: 8px -10px 0;
+    padding: 9px 0 6px;
+    background-color: rgba(0,0,0,.7);
 }
 .suit-container h3 span {
+    background-color: transparent;
+}
+.h1, h1 {
+    font-size: 60px;
 }
 </style>
 
@@ -250,6 +276,14 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
 </head>
 <body>
 <div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6 left-spacer">
+            <h4><a href="#" id="reverse-link" role="button"><span class="glyphicon glyphicon-refresh"></span></a></h4>
+        </div>
+        <div class="col-xs-6 right-spacer">
+            <h4><a href="#" id="clear-link" role="button"><span class="glyphicon glyphicon-trash"></span></a></h4>
+        </div>
+    </div>
     <div class="row" id="suits-container">
         <!-- <div class="col-md-1 xs-hidden" class="left-spacer"></div> -->
         <div id="suit-yellow-container" class="col-xs-5ths suit-container"></div>
@@ -263,11 +297,9 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
         </div> -->
     </div>
     <div class="row">
-        <!-- <div class="col-xs-1 left-spacer"></div> -->
         <div class="col-xs-12">
              <h1 id="overall-total"><span class="label label-default">0</span></h1>
         </div>
-        <!-- <div class="col-xs-1 right-spacer"></div> -->
     </div>
 </div>
 </body>
