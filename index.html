@@ -5,6 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <meta name="viewport" id="viewport_device" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <title>Lost Cities scorekeeper</title>
 <!--<script type='text/javascript' src='https://code.jquery.com/jquery-2.1.3.js'></script>-->
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
@@ -126,7 +127,7 @@ for (var i = 0; i < suits.length; i++) {
 
     var containerId = 'suit-' + suit + '-container';
 
-    $('#suits-container').append('<div id="' + containerId + '" class="col-xs-2"></div>');
+    // $('#suits-container').append('<div id="' + containerId + '" class="col-xs-2"></div>');
 
 
     for (var j = 0; j < cards.length; j++) {
@@ -173,7 +174,7 @@ $('#reverse-link').tap(reverseSuits);
 $('#clear-link').tap(clearSuits);
 
 if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/IEMobile/i)) {
-    $("#viewport_device").attr("content", "width=550, initial-scale=1.0");
+    $("#viewport_device").attr("content", "width=480, initial-scale=1.0, user-scalable=no");
 } else if(navigator.userAgent.match(/iPad/i)) {
     // $("#viewport_device").attr("content", "initial-scale = 1.00");
 }
@@ -192,8 +193,8 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
         <div id="suit-green-container" class="col-xs-2 col-md-2 suit-container"></div>
         <div id="suit-red-container" class="col-xs-2 col-md-2 suit-container"></div>
         <div class="col-xs-1 col-md-1 right-spacer">
-            <h3><a href="#" id="reverse-link" role="button"><span class="glyphicon glyphicon-refresh"></span></a></h3>
-            <h3><a href="#" id="clear-link" role="button"><span class="glyphicon glyphicon-trash"></span></a></h3>
+            <h4><a href="#" id="reverse-link" role="button"><span class="glyphicon glyphicon-refresh"></span></a></h4>
+            <h4><a href="#" id="clear-link" role="button"><span class="glyphicon glyphicon-trash"></span></a></h4>
         </div>
     </div>
     <div class="row">
